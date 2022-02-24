@@ -19,14 +19,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 2,
@@ -46,14 +46,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 3,
@@ -73,14 +73,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 4,
@@ -100,14 +100,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 5,
@@ -127,14 +127,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 6,
@@ -154,14 +154,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 7,
@@ -181,14 +181,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 8,
@@ -208,14 +208,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 9,
@@ -235,14 +235,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 10,
@@ -262,14 +262,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 11,
@@ -289,14 +289,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
     {
         id: 12,
@@ -316,14 +316,14 @@ export const pokemons = [
                 eggCycle: '5 months',
             }
         },
-        stats: {
-            hp: 45,
-            attack: 49,
-            defense: 49,
-            specialAttack: 65,
-            specialDefense: 65,
-            speed: 45
-        },
+        stats: [
+            ['HP', '45'],
+            ['Attack', '49'],
+            ['Defense', '49'],
+            ['Sp. Attack', '65'],
+            ['Sp. Defense', '65'],
+            ['Speed', '45']
+        ]
     },
 ]
 

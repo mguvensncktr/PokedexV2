@@ -75,4 +75,4 @@ export const pokemons = [
     },
 ]
 
-export default { pokemons }
+export default pokemons

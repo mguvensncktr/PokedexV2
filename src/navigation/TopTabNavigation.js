@@ -2,13 +2,13 @@ import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AboutScreen from '../screens/AboutScreen';
 import BaseStatsScreen from "../screens/BaseStatsScreen";
+import { Text } from "react-native";
 
 import { COLORS, FONTS, SIZES } from "../constants";
-import { Text, View } from "react-native";
 
 const Tab = createMaterialTopTabNavigator();
 
-const TopTabNavigation = () => {
+const TopTabNavigation = ({ pokemon }) => {
     return (
         <Tab.Navigator
             initialRouteName="About"
@@ -38,21 +38,25 @@ const TopTabNavigation = () => {
                         <Text style={{
                             fontSize: SIZES.font,
                             color: color,
+                            fontWeight: 'bold',
                             ...FONTS.body3,
                         }}>About</Text>
                     ),
                 }}
+                initialParams={{ pokemon }}
             />
             <Tab.Screen name="Stats" component={BaseStatsScreen}
                 options={{
                     tabBarLabel: ({ focused }) => (
                         <Text style={{
                             fontSize: SIZES.font,
+                            fontWeight: 'bold',
                             color: focused ? COLORS.black : '#bfbfbf',
                             ...FONTS.body3,
-                        }}>Stats</Text>
+                        }}>Base Stats</Text>
                     ),
                 }}
+                initialParams={{ pokemon }}
             />
         </Tab.Navigator>
     )

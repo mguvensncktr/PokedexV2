@@ -9,10 +9,11 @@ const TypeCard = ({ text, containerStyle }) => {
             justifyContent: 'center',
             alignItems: 'center',
             paddingVertical: 2,
-            maxWidth: 60,
+            maxWidth: 70,
+            paddingHorizontal: 10,
             ...containerStyle
         }}>
-            <Text style={{ color: '#fff', fontSize: 12 }}>{text.charAt(0).toUpperCase() + text.slice(1)}</Text>
+            <Text style={{ color: '#fff', fontSize: 14 }}>{text.charAt(0).toUpperCase() + text.slice(1)}</Text>
         </View>
     )
 }

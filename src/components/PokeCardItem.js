@@ -1,5 +1,6 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 import TypeCard from './TypeCard'
 import { SIZES, COLORS, FONTS } from '../constants'
 
@@ -24,8 +25,11 @@ const backgroundColor = {
 }
 
 const PokeCardItem = ({ item }) => {
+
+    const navigation = useNavigation()
+
     return (
-        <View
+        <TouchableOpacity
             style={{
                 backgroundColor: backgroundColor[item.type],
                 margin: SIZES.padding,
@@ -34,6 +38,7 @@ const PokeCardItem = ({ item }) => {
                 flex: 1,
                 maxWidth: SIZES.width / 2,
             }}
+            onPress={() => navigation.navigate('Detail', { pokemon: item, backgroundColor: backgroundColor[item.type] })}
         >
             <View style={{ padding: SIZES.padding }}>
                 <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{item.name}</Text>
@@ -45,7 +50,7 @@ const PokeCardItem = ({ item }) => {
                 resizeMode="contain"
                 style={{ width: 100, height: 100, marginLeft: -15 }}
             />
-        </View>
+        </TouchableOpacity>
     )
 }
 

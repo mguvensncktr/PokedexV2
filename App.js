@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
-import HomeScreen from './src/screens/HomeScreen';
+import Navigator from './src/navigation/Navigation';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
 
@@ -18,8 +19,10 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="auto" />
-      <HomeScreen />
+      <NavigationContainer>
+        <Navigator />
+        <StatusBar style="auto" />
+      </NavigationContainer>
     </>
   );
 }

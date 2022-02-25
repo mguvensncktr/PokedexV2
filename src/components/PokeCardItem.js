@@ -1,9 +1,8 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity, LogBox } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import TypeCard from './TypeCard'
 import { SIZES, COLORS, FONTS } from '../constants'
-import { usePokemonContext } from '../context/PokemonContext'
 import axios from 'axios'
 
 const backgroundColor = {
@@ -28,9 +27,41 @@ const backgroundColor = {
 
 const PokeCardItem = (props) => {
 
+    // disable all logbox warnings
+    LogBox.ignoreLogs([
+        'Can\'t perform a React state update on an unmounted component',
+    ])
+
     const navigation = useNavigation();
     const { pokemon } = props;
+    const [loading, setLoading] = useState(false);
     const type = pokemon?.types[0].type.name;
+
+    const getChainURL = async () => {
+        setLoading(true);
+        const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon.name}`;
+        const response = await axios.get(url);
+        setLoading(false);
+        return response.data.evolution_chain.url;
+    }
+
+    const getChain = async () => {
+        if (loading) {
+            return
+        };
+        const url = await getChainURL();
+        const response = await axios.get(url);
+        return response.data.chain;
+    }
+
+    const [chain, setChain] = useState(null);
+
+    useEffect(() => {
+        getChain().then(res => {
+            setChain(res);
+        })
+    }, [])
+
 
     return (
         <TouchableOpacity
@@ -42,7 +73,7 @@ const PokeCardItem = (props) => {
                 flex: 1,
                 maxWidth: SIZES.width / 2,
             }}
-            onPress={() => navigation.navigate('Detail', { backgroundColor: backgroundColor[type], pokemon: pokemon })}
+            onPress={() => navigation.navigate('Detail', { backgroundColor: backgroundColor[type], pokemon: pokemon, evolveChain: chain })}
         >
             <View style={{ padding: SIZES.padding }}>
                 <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{pokemon?.name.charAt(0).toUpperCase() + pokemon?.name.slice(1)}</Text>

@@ -1,14 +1,15 @@
 import React from "react";
+import { Text } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AboutScreen from '../screens/AboutScreen';
 import BaseStatsScreen from "../screens/BaseStatsScreen";
-import { Text } from "react-native";
+import EvolutionScreen from '../screens/EvolutionScreen';
 
 import { COLORS, FONTS, SIZES } from "../constants";
 
 const Tab = createMaterialTopTabNavigator();
 
-const TopTabNavigation = ({ pokemon }) => {
+const TopTabNavigation = ({ pokemon, evolveChain }) => {
     return (
         <Tab.Navigator
             initialRouteName="About"
@@ -57,6 +58,19 @@ const TopTabNavigation = ({ pokemon }) => {
                     ),
                 }}
                 initialParams={{ pokemon }}
+            />
+            <Tab.Screen name="Evolution" component={EvolutionScreen}
+                options={{
+                    tabBarLabel: ({ focused }) => (
+                        <Text style={{
+                            fontSize: SIZES.font,
+                            fontWeight: 'bold',
+                            color: focused ? COLORS.black : '#bfbfbf',
+                            ...FONTS.body3,
+                        }}>Evolution</Text>
+                    ),
+                }}
+                initialParams={{ evolveChain }}
             />
         </Tab.Navigator>
     )

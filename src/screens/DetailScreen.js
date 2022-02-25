@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import TypeCard from '../components/TypeCard';
 import TopTabNavigation from '../navigation/TopTabNavigation';
-import axios from 'axios';
 
 // constants
 import { SIZES, COLORS, FONTS, icons } from '../constants'
@@ -11,9 +10,7 @@ import { SIZES, COLORS, FONTS, icons } from '../constants'
 const DetailScreen = ({ route }) => {
 
     const navigation = useNavigation();
-    const { backgroundColor, pokemon } = route.params;
-
-
+    const { backgroundColor, pokemon, evolveChain } = route.params;
 
     function renderHeader() {
         return (
@@ -97,7 +94,7 @@ const DetailScreen = ({ route }) => {
     function renderPokemonDetails() {
         return (
             <View style={{ flex: 1, backgroundColor: COLORS.white, marginTop: Platform.OS === 'ios' ? -55 : -70, borderTopLeftRadius: SIZES.radius, borderTopRightRadius: SIZES.radius }}>
-                <TopTabNavigation pokemon={pokemon} />
+                <TopTabNavigation pokemon={pokemon} evolveChain={evolveChain} />
             </View>
         )
     }

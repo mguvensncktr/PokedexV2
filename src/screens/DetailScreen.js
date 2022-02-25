@@ -96,7 +96,7 @@ const DetailScreen = ({ route }) => {
 
     function renderPokemonDetails() {
         return (
-            <View style={{ flex: 1, backgroundColor: COLORS.white, marginTop: Platform.OS === 'ios' ? -55 : -130, borderTopLeftRadius: SIZES.radius, borderTopRightRadius: SIZES.radius }}>
+            <View style={{ flex: 1, backgroundColor: COLORS.white, marginTop: Platform.OS === 'ios' ? -55 : -70, borderTopLeftRadius: SIZES.radius, borderTopRightRadius: SIZES.radius }}>
                 <TopTabNavigation pokemon={pokemon} />
             </View>
         )

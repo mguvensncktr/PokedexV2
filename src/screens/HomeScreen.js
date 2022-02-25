@@ -1,7 +1,8 @@
-import { View, Text, Image, TextInput, FlatList, RefreshControl, Keyboard } from 'react-native'
+import { View, Text, Image, TextInput, FlatList, RefreshControl, Keyboard, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import PokeCardItem from '../components/PokeCardItem';
 import axios from "axios";
+import { AntDesign } from '@expo/vector-icons';
 
 // constants
 import { COLORS, SIZES, FONTS, icons } from '../constants'
@@ -44,6 +45,13 @@ const HomeScreen = () => {
         setAllPokemons(newData);
     }
 
+    const handleRefresh = () => {
+        setSearch('');
+        setAllPokemons([]);
+        setFilteredPokemons([]);
+        getAllPokemons();
+    }
+
     function renderHeaderAndSearchBar() {
         return (
             <View style={{ marginTop: 40, marginHorizontal: SIZES.padding2 }}>
@@ -62,7 +70,7 @@ const HomeScreen = () => {
                             shadowOpacity: 0.3,
                             elevation: 5,
                         }}>
-                        <Image source={icons.search} style={{ width: 20, height: 20, tintColor: "#d9d9d9" }} />
+                        <Image source={icons.pokeball} style={{ width: 25, height: 25, borderRadius: 20 }} />
                         <TextInput
                             style={{
                                 borderRadius: 10,
@@ -78,13 +86,28 @@ const HomeScreen = () => {
                             onChangeText={(text) => handleSearch(text)}
                         />
                     </View>
+                    {
+                        search.length > 0 &&
+                        <View style={{ marginTop: SIZES.padding2 }}>
+                            <Text style={{ color: COLORS.black, ...FONTS.h4 }}>
+                                {allPokemons.length} results found for "{search}"
+                            </Text>
+                        </View>
+                    }
+                    {
+                        search.length === 0 &&
+                        <View style={{ marginTop: SIZES.padding2 }}>
+                            <Text style={{ color: COLORS.black, ...FONTS.h4 }}>
+                                {allPokemons.length} pokemons found
+                            </Text>
+                        </View>
+                    }
+                    {
+                        search.length === 0 && Keyboard.dismiss()
+                    }
                 </View>
             </View>
         )
-    }
-
-    {
-        search.length === 0 && Keyboard.dismiss()
     }
 
     return (
@@ -101,6 +124,7 @@ const HomeScreen = () => {
                     <RefreshControl
                         refreshing={loading}
                         tintColor="#16c784"
+                        onRefresh={handleRefresh}
                     />
                 }
             />

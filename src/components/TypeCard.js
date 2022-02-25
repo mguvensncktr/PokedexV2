@@ -1,10 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const TypeCard = ({ text, containerStyle, key }) => {
+const TypeCard = ({ text, containerStyle }) => {
     return (
         <View
-            key={key}
             style={{
                 backgroundColor: 'rgba(255, 255, 255, 0.3)',
                 borderRadius: 20,

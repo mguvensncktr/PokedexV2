@@ -71,12 +71,10 @@ const DetailScreen = ({ route }) => {
                             marginTop: SIZES.base
                         }}
                     >
+                        <TypeCard text={pokemon?.types[0].type.name} containerStyle={{ marginRight: 5 }} />
                         {
-                            pokemon?.types.map((type, index) =>
-                            (
-                                <TypeCard key={index} text={type.type.name} containerStyle={{ marginRight: index === 0 ? 5 : 0 }} />
-                            )
-                            )
+                            pokemon?.types[1] &&
+                            <TypeCard text={pokemon?.types[1].type.name} containerStyle={{ marginRight: 5 }} />
                         }
                     </View>
                 </View>

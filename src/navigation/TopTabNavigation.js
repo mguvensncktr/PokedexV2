@@ -4,6 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import AboutScreen from '../screens/AboutScreen';
 import BaseStatsScreen from "../screens/BaseStatsScreen";
 import EvolutionScreen from '../screens/EvolutionScreen';
+import MovesScreen from '../screens/MovesScreen';
 
 import { COLORS, FONTS, SIZES } from "../constants";
 
@@ -71,6 +72,19 @@ const TopTabNavigation = ({ pokemon, evolveChain }) => {
                     ),
                 }}
                 initialParams={{ evolveChain }}
+            />
+            <Tab.Screen name="Moves" component={MovesScreen}
+                options={{
+                    tabBarLabel: ({ focused }) => (
+                        <Text style={{
+                            fontSize: SIZES.font,
+                            fontWeight: 'bold',
+                            color: focused ? COLORS.black : '#bfbfbf',
+                            ...FONTS.body3,
+                        }}>Moves</Text>
+                    ),
+                }}
+                initialParams={{ pokemon }}
             />
         </Tab.Navigator>
     )

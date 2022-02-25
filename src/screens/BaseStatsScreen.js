@@ -38,7 +38,7 @@ const BaseStatsScreen = ({ route }) => {
                                             style={{
                                                 width: pokemon?.stats[index].base_stat,
                                                 height: '100%',
-                                                backgroundColor: pokemon?.stats[index].base_stat > 80 ? COLORS.green : COLORS.red
+                                                backgroundColor: pokemon?.stats[index].base_stat >= 80 ? COLORS.green : COLORS.red
                                             }}
                                         />
                                     </View>

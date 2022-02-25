@@ -11,10 +11,9 @@ const BaseStatsScreen = ({ route }) => {
             <View
                 style={{
                     margin: SIZES.padding2,
-                    flex: 1
                 }}
             >
-                <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1, justifyContent: 'space-between' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <View>
                         {
                             pokemon.stats.map((item, index) => {
@@ -44,7 +43,7 @@ const BaseStatsScreen = ({ route }) => {
 
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: COLORS.white }}>
-            {renderStats()}
+            {/* {renderStats()} */}
         </ScrollView>
     )
 }

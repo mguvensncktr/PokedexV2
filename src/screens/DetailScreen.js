@@ -1,17 +1,16 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Platform } from 'react-native'
 import React from 'react'
-import { useRoute, useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import TypeCard from '../components/TypeCard';
 import TopTabNavigation from '../navigation/TopTabNavigation';
 
 // constants
 import { SIZES, COLORS, FONTS, icons } from '../constants'
 
-const DetailScreen = () => {
+const DetailScreen = ({ route }) => {
 
     const navigation = useNavigation();
-    const route = useRoute();
-    const { pokemon, backgroundColor } = route.params;
+    const { backgroundColor, pokemon } = route.params;
 
     function renderHeader() {
         return (
@@ -64,7 +63,7 @@ const DetailScreen = () => {
                 }}
             >
                 <View style={{ alignItems: 'center' }}>
-                    <Text style={{ color: COLORS.white, ...FONTS.h1 }}>{pokemon?.name}</Text>
+                    <Text style={{ color: COLORS.white, ...FONTS.h1 }}>{pokemon?.name.charAt(0).toUpperCase() + pokemon?.name.slice(1)}</Text>
                     <View
                         style={{
                             flexDirection: 'row',
@@ -72,8 +71,13 @@ const DetailScreen = () => {
                             marginTop: SIZES.base
                         }}
                     >
-                        <TypeCard text={pokemon.type} containerStyle={{ marginRight: SIZES.base }} />
-                        <TypeCard text={pokemon.type} />
+                        {
+                            pokemon?.types.map((type, index) =>
+                            (
+                                <TypeCard key={index} text={type.type.name} containerStyle={{ marginRight: index === 0 ? 5 : 0 }} />
+                            )
+                            )
+                        }
                     </View>
                 </View>
                 <Text style={{ color: COLORS.white, ...FONTS.body2 }}>#{pokemon?.id.toString().padStart(3, '0')}</Text>
@@ -83,15 +87,15 @@ const DetailScreen = () => {
 
     function renderPokemonImage() {
         return (
-            <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                <Image source={{ uri: pokemon?.image }} style={{ width: '100%', height: 250, zIndex: 999 }} resizeMode="contain" />
+            <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1, zIndex: 999 }}>
+                <Image source={{ uri: pokemon?.sprites.front_default }} style={{ width: '100%', height: 250 }} resizeMode="contain" />
             </View>
         )
     }
 
     function renderPokemonDetails() {
         return (
-            <View style={{ flex: 1, backgroundColor: COLORS.white, marginTop: -130, borderTopLeftRadius: SIZES.radius, borderTopRightRadius: SIZES.radius }}>
+            <View style={{ flex: 1, backgroundColor: COLORS.white, marginTop: Platform.OS === 'ios' ? -55 : -130, borderTopLeftRadius: SIZES.radius, borderTopRightRadius: SIZES.radius }}>
                 <TopTabNavigation pokemon={pokemon} />
             </View>
         )

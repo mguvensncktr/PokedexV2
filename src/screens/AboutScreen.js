@@ -11,27 +11,27 @@ const AboutScreen = ({ route }) => {
             <View style={{ margin: SIZES.padding2 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Species:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.species}</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>Pokemon</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Height:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.height}</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.height}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Weight:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.weight}</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.weight}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Abilities:</Text>
                     {
-                        pokemon.about.abilities.map((item, idx) => {
+                        pokemon?.abilities.map((ability, idx) => {
                             return (
-                                <Text key={idx} style={{ color: COLORS.black, ...FONTS.body4, marginLeft: idx === 0 ? 50 : 0 }}>{item}{idx === 0 ? ',' : null}</Text>
+                                <Text key={idx} style={{ color: COLORS.black, ...FONTS.body4, marginLeft: idx === 0 ? 50 : 0 }}>{ability.ability.name.charAt(0).toUpperCase() + ability.ability.name.slice(1)}{idx === 0 ? ',' : null}</Text>
                             )
                         })
                     }
                 </View>
-                <Text style={{ color: COLORS.black, ...FONTS.h4, marginTop: SIZES.base }}>Breeding</Text>
+                {/* <Text style={{ color: COLORS.black, ...FONTS.h4, marginTop: SIZES.base }}>Breeding</Text>
                 <View
                     style={{
                         flexDirection: 'row',
@@ -51,7 +51,7 @@ const AboutScreen = ({ route }) => {
                 >
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Egg Cycle:</Text>
                     <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.breeding.eggCycle}</Text>
-                </View>
+                </View> */}
             </View>
         )
     }

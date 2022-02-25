@@ -1,8 +1,10 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import TypeCard from './TypeCard'
 import { SIZES, COLORS, FONTS } from '../constants'
+import { usePokemonContext } from '../context/PokemonContext'
+import axios from 'axios'
 
 const backgroundColor = {
     'grass': '#7CB342',
@@ -24,29 +26,36 @@ const backgroundColor = {
     'dragon': '#3F51B5',
 }
 
-const PokeCardItem = ({ item }) => {
+const PokeCardItem = (props) => {
 
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const { pokemon } = props;
+    const type = pokemon?.types[0].type.name;
 
     return (
         <TouchableOpacity
             style={{
-                backgroundColor: backgroundColor[item.type],
+                backgroundColor: backgroundColor[type],
                 margin: SIZES.padding,
                 borderRadius: SIZES.radius / 2,
                 flexDirection: 'row',
                 flex: 1,
                 maxWidth: SIZES.width / 2,
             }}
-            onPress={() => navigation.navigate('Detail', { pokemon: item, backgroundColor: backgroundColor[item.type] })}
+            onPress={() => navigation.navigate('Detail', { backgroundColor: backgroundColor[type], pokemon: pokemon })}
         >
             <View style={{ padding: SIZES.padding }}>
-                <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{item.name}</Text>
-                <TypeCard text={item.type} containerStyle={{ marginTop: 10 }} />
-                <TypeCard text="Poison" containerStyle={{ marginTop: 5 }} />
+                <Text style={{ color: COLORS.white, ...FONTS.body4 }}>{pokemon?.name.charAt(0).toUpperCase() + pokemon?.name.slice(1)}</Text>
+                {
+                    pokemon?.types.map((type, index) =>
+                    (
+                        <TypeCard key={index} text={type.type.name} containerStyle={{ marginTop: SIZES.base / 2 }} />
+                    )
+                    )
+                }
             </View>
             <Image
-                source={{ uri: item.image }}
+                source={{ uri: pokemon?.sprites.front_default }}
                 resizeMode="contain"
                 style={{ width: 100, height: 100, marginLeft: -15 }}
             />

@@ -3,6 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
 import Navigator from './src/navigation/Navigation';
 import { NavigationContainer } from '@react-navigation/native';
+import PokemonContextProvider from './src/context/PokemonContext';
 
 export default function App() {
 
@@ -19,10 +20,12 @@ export default function App() {
 
   return (
     <>
-      <NavigationContainer>
-        <Navigator />
-        <StatusBar style="auto" />
-      </NavigationContainer>
+      <PokemonContextProvider>
+        <NavigationContainer>
+          <Navigator />
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </PokemonContextProvider>
     </>
   );
 }

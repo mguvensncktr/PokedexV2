@@ -1,31 +1,46 @@
-import { View, Text, Image, TextInput, FlatList } from 'react-native'
+import { View, Text, Image, TextInput, FlatList, RefreshControl } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import PokeCardItem from '../components/PokeCardItem';
+import axios from "axios";
 
 // constants
-import { COLORS, SIZES, FONTS, icons, pokemons } from '../constants'
+import { COLORS, SIZES, FONTS, icons } from '../constants'
 
 const HomeScreen = () => {
 
+
     const [search, setSearch] = useState('');
-    const [pokemonsList, setPokemonsList] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [url, setUrl] = useState('https://pokeapi.co/api/v2/pokemon?limit=20');
+    const [allPokemons, setAllPokemons] = useState([]);
+
+    const getAllPokemons = async () => {
+        setLoading(true);
+        const res = await axios.get(url);
+        setUrl(res.data.next);
+        setLoading(false);
+        function pokemonObject(result) {
+            result.map(async (pokemon) => {
+                const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`);
+                setAllPokemons((currentList) => [...currentList, res.data]);
+            })
+        }
+        pokemonObject(res.data.results);
+    }
 
     useEffect(() => {
-        setLoading(true);
-        setPokemonsList(pokemons);
-        setLoading(false);
+        getAllPokemons();
     }, [])
 
-    const handleSearch = (text) => {
-        setSearch(text);
-        const newData = pokemons.filter(item => {
-            const itemData = `${item.name.toUpperCase()}`;
-            const textData = text.toUpperCase();
-            return itemData.indexOf(textData) > -1;
-        });
-        setPokemonsList(newData);
-    }
+    // const handleSearch = (text) => {
+    //     setSearch(text);
+    //     const newData = pokemons.filter(item => {
+    //         const itemData = `${item.name.toUpperCase()}`;
+    //         const textData = text.toUpperCase();
+    //         return itemData.indexOf(textData) > -1;
+    //     });
+    //     setPokemonsList(newData);
+    // }
 
     function renderHeaderAndSearchBar() {
         return (
@@ -57,8 +72,8 @@ const HomeScreen = () => {
                             }}
                             placeholder="Search pokemons"
                             placeholderTextColor="#d9d9d9"
-                            value={search}
-                            onChangeText={(text) => handleSearch(text)}
+                        // value={search}
+                        // onChangeText={(text) => handleSearch(text)}
                         />
                     </View>
                 </View>
@@ -71,15 +86,25 @@ const HomeScreen = () => {
             {renderHeaderAndSearchBar()}
             <FlatList
                 style={{ margin: 5 }}
-                data={pokemonsList}
-                keyExtractor={item => `${item.id}`}
+                data={allPokemons}
+                keyExtractor={item => `Poke-${item.id}`}
                 numColumns={2}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item }) => <PokeCardItem item={item} />}
+                renderItem={({ item }) => <PokeCardItem pokemon={item} />}
+            // refreshControl={
+            //     <RefreshControl
+            //         refreshing={loading}
+            //         onRefresh={refetchPokemons}
+            //         tintColor="#16c784"
+            //     />
+            // }
+            // onEndReached={() => fetchPokemons(20)}
             />
+
         </View>
     )
 }
+
 
 
 export default HomeScreen

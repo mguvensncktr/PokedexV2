@@ -15,11 +15,11 @@ const AboutScreen = ({ route }) => {
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Height:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.height}</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.height / 10} m</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Weight:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.weight}</Text>
+                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon?.weight / 10} kg</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', paddingVertical: SIZES.base }}>
                     <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Abilities:</Text>
@@ -31,27 +31,6 @@ const AboutScreen = ({ route }) => {
                         })
                     }
                 </View>
-                {/* <Text style={{ color: COLORS.black, ...FONTS.h4, marginTop: SIZES.base }}>Breeding</Text>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingVertical: SIZES.base,
-                    }}
-                >
-                    <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Egg Groups:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.breeding.egggroup}</Text>
-                </View>
-                <View
-                    style={{
-                        flexDirection: 'row',
-                        alignItems: 'center',
-                        paddingVertical: SIZES.base,
-                    }}
-                >
-                    <Text style={{ color: COLORS.gray, ...FONTS.body4 }}>Egg Cycle:</Text>
-                    <Text style={{ color: COLORS.black, ...FONTS.body4, marginLeft: 50 }}>{pokemon.about.breeding.eggCycle}</Text>
-                </View> */}
             </View>
         )
     }

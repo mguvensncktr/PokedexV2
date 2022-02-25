@@ -1,8 +1,9 @@
 import { View, Text, TouchableOpacity, Image, Platform } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import TypeCard from '../components/TypeCard';
 import TopTabNavigation from '../navigation/TopTabNavigation';
+import axios from 'axios';
 
 // constants
 import { SIZES, COLORS, FONTS, icons } from '../constants'
@@ -11,6 +12,8 @@ const DetailScreen = ({ route }) => {
 
     const navigation = useNavigation();
     const { backgroundColor, pokemon } = route.params;
+
+
 
     function renderHeader() {
         return (
